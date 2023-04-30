@@ -1,8 +1,8 @@
 import socket
 host = socket.gethostname()
-port = 6030
+port = 6032
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-serversocket.bind(('', port))
+serversocket.bind(('127.0.0.1', port))
 serversocket.listen(1)
 print("Waiting for a client connection...")
 clientsocket, address = serversocket.accept()
@@ -16,7 +16,7 @@ while True:
         break
     response = input("Server: ")
     clientsocket.send(response.encode())
-    if message=="Bye":
+    if message=="Bye" or message=="tata":
         break
 
 print("Closing connection...")
